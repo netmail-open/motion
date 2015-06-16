@@ -1,0 +1,12 @@
+# motion
+RESTful JSON interface for email queue
+
+Motion is an open project from Netmail which presents a new, modern means of interacting with an email queue.
+
+Goals:
+- Accept mail from authenticated sources (augment, not replace SMTP)
+- Act as (or replace) submission port
++ Built-in and external services
+  - Condition services: match message data with criteria
+  - Action services: policy engine, delivery, anything (outside scope)
+- Reference implementation in NodeJS: condition services, forward to SMTP

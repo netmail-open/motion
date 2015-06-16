@@ -10,3 +10,6 @@ Goals:
   - Condition services: match message data with criteria
   - Action services: policy engine, delivery, anything (outside scope)
 - Reference implementation in NodeJS: condition services, forward to SMTP
+
+Wiki:
+https://github.com/netmail-open/motion/wiki

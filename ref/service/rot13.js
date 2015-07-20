@@ -12,9 +12,9 @@ post data to me with:
 var http = require("http");
 var querystring = require("querystring");
 
+
 var ENDPOINT = "/rot13/";
 var SUBMIT = "/rot13/submit";
-
 var MANIFEST = {
 	"name": "translate",
 	"description": "rot13's a message",
@@ -23,8 +23,7 @@ var MANIFEST = {
 	"modifies": [ "body" ],
 	"endpoint": ENDPOINT
 };
-//how to config
-//post for actual work
+
 
 function rot13(str) {
 	var map = [];
@@ -48,7 +47,7 @@ function rot13(str) {
 }
 
 http.createServer(function (req, res) {
-	console.log(req.url, req.method);
+	//console.log(req.url, req.method);
 	if(req.url === "/") {
 		res.writeHead(200, {
 			"Content-Type": "application/json"
@@ -64,7 +63,7 @@ http.createServer(function (req, res) {
 		var data = [];
 		if(req.method === "POST") {
 			req.on("data", function(chunk) {
-				console.log("chunk:", chunk.toString());
+				//console.log("chunk:", chunk.toString());
 				data.push(chunk.toString());
 			});
 			req.on("end", function() {
@@ -92,5 +91,5 @@ http.createServer(function (req, res) {
 			res.end("405 Method Not Allowed");
 		}
 	}
-}).listen(30710, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:30710/');
+}).listen(30710, "127.0.0.1");
+console.log("motion server 'rot13' running at http://127.0.0.1:30710");

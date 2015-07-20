@@ -33,7 +33,7 @@ function rot13(str) {
 	for(i = 0; i < s.length; i++) {
 		map[s.charAt(i)] = s.charAt( (i + 13) % 26);
 	}
-	for(i=0; i<s.length; i++) {
+	for(i = 0; i < s.length; i++) {
 		map[s.charAt(i).toUpperCase()] = (
 			s.charAt( (i + 13) % 26).toUpperCase());
 	}

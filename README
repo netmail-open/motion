@@ -3,12 +3,13 @@ Motion - RESTful JSON interface for message services
 Motion is an open project from Netmail which presents a new, modern means of interacting with an email queue.
 
 Goals:
-- Accept mail from authenticated sources (augment, not replace SMTP)
-- Act as (or replace) submission port
 + Built-in and external services
-  - Condition services: match message data with criteria
-  - Action services: policy engine, delivery, anything (outside scope)
-- Reference implementation in NodeJS: condition services, forward to SMTP
+  - Discovery services: Provide detail and additional information about a message
+  - Action services: Perform an action on a message
++ Reference MTA and mailbox scanner implementation in NodeJS:
+  - Condition services
+  - Forward to SMTP
+  - Write to mailbox
 
 Wiki:
 https://github.com/netmail-open/motion/wiki

@@ -4,7 +4,7 @@ run me with:
     node rot13.js
 
 post data to me with:
-    curl -v -d @post.txt localhost:30710/rot13/submit
+    curl -v -d @rot13-post.json localhost:30710/rot13/submit
 
  */
 
@@ -92,4 +92,4 @@ http.createServer(function (req, res) {
 		}
 	}
 }).listen(30710, "127.0.0.1");
-console.log("motion server 'rot13' running at http://127.0.0.1:30710");
+console.log("motion service 'rot13' running at http://127.0.0.1:30710");

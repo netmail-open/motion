@@ -10,9 +10,6 @@
 # post data to me through that same Location:
 #    curl -v -d @knights-post.json localhost:30710/knights/...
 
-#ni
-#ecky-ecky-ecky-ecky-pikang-zoop-boing-goodem-zhou-zhiv
-
 
 import json
 import BaseHTTPServer, cgi

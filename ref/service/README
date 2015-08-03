@@ -1,0 +1,17 @@
+Here you will find simple example Motion services in various languages.
+
+rot13.js
+- Written in JavaScript for Node.
+- A quick and dirty Motion service which rot13-"encodes" a message.
+- No configuration.
+
+regex.pl
+- Written in Perl.
+- A basic Motion service which notices regular expression matches in messages.
+- Configurable, demonstrating unique and randomized configuration paths.
+
+knights.py
+- Written in Python.
+- Messages with a "shubbery" property may pass, others are tampered with.
+- Configurable, but notice that only one global configuration is used.
+- May be allergic to some certain word...

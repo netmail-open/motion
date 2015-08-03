@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Motion service 'knights' configuration</title>
+</head>
+<body>
+<h1>Motion service 'knights' configuration</h1>
+<form method="POST" action="/knights/config/save/">
+<label for="word">We are the knights who say:</label>
+<br>
+<select id="word" name="word">
+  <option value="ni">
+    ni
+  </option>
+  <option value="ecky-ecky-ecky-ecky-pikang-zoop-boing-goodem-zhou-zhiv">
+    ecky-ecky-ecky-ecky-pikang-zoop-boing-goodem-zhou-zhiv
+  </option>
+</select>
+<br>
+<br>
+<input type="submit" value="Save">
+<input type="reset" value="Reset">
+</form>
+<script>
+var opts = document.querySelectorAll("#word option");
+for(var i = 0; i < opts.length; i++) {
+  var element = opts[i];
+  if("@WORD_VALUE@" === element.value) {
+    element.selected = true;
+  }
+}
+</script>
+</body>
+</html>

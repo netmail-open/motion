@@ -16,8 +16,8 @@ var querystring = require("querystring");
 var ENDPOINT = "/rot13/";
 var SUBMIT = "/rot13/submit";
 var MANIFEST = {
-	"name": "translate",
-	"description": "rot13's a message",
+	"name": "rot13",
+	"description": "rot13-encodes a message",
 	"requires": [ "body" ],
 	"requests": [ ],
 	"modifies": [ "body" ],

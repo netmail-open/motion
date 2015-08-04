@@ -74,7 +74,7 @@ while(my $c = $SERVER->accept) {
 			$response->content(to_json($MANIFEST, {utf8 => 1, pretty => 1}));
 			$c->send_response($response);
 		} elsif($r->uri->path eq $ENDPOINT) {
-			# create new config and serve Location redirect
+			# create new config and serve Location
 			if($r->method eq "POST") {
 				my $newconf = new_config();
 				$main::CONFIG->{$newconf} = {
@@ -82,7 +82,10 @@ while(my $c = $SERVER->accept) {
 				};
 				write_file($main::CFG, to_json($main::CONFIG,
 											   {utf8 => 1, pretty => 1}));
-				$c->send_redirect(join("", $ENDPOINT, $newconf));
+				my $response = HTTP::Response->new(201);
+				$response->header("Content-Type" => "application/json");
+				$response->header("Location" => join("", $ENDPOINT, $newconf));
+				$c->send_response($response);
 			} else {
 				$c->send_error(405);
 			}

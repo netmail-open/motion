@@ -40,25 +40,25 @@ except:
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_HEAD(s):
         s.send_response(200)
-        s.send_header("Content-type", "application/json")
+        s.send_header("Content-Type", "application/json")
         s.end_headers()
     def do_POST(s):
         if s.path == ENDPOINT:
-            s.send_response(301)
+            s.send_response(201)
             s.send_header("Location", CONFIGPATH)
             s.end_headers()
         elif s.path == CONFIGPATH:
             try:
-                content_len = int(s.headers.getheader('Content-length', 0))
+                content_len = int(s.headers.getheader('Content-Length', 0))
                 req = json.loads(s.rfile.read(content_len))
                 sub = req["subject"]
             except:
                 s.send_response(400)
-                s.send_header("Content-type", "text/plain")
+                s.send_header("Content-Type", "text/plain")
                 s.wfile.write("400 Bad Request")
                 return
             s.send_response(200)
-            s.send_header("Content-type", "application/json")
+            s.send_header("Content-Type", "application/json")
             s.end_headers()
             res = {}
             if sub.split().count("it"):
@@ -69,7 +69,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 res["subject"] = CONFIG["word"] + "!!!"
             s.wfile.write(json.dumps(res))
         elif s.path == CONFIGSAVE:
-            content_len = int(s.headers.getheader('Content-length', 0))
+            content_len = int(s.headers.getheader('Content-Length', 0))
             query_string = s.rfile.read(content_len)
             args = dict(cgi.parse_qsl(query_string))
             if args["word"]:
@@ -80,21 +80,29 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             s.send_response(301)
             s.send_header("Location", CONFIGPATH)
             s.end_headers()
+        else:
+            s.send_response(400)
+            s.send_header("Content-Type", "text/plain")
+            s.wfile.write("400 Bad Request")
     def do_GET(s):
         if s.path == "/":
             s.send_response(200)
-            s.send_header("Content-type", "application/json")
+            s.send_header("Content-Type", "application/json")
             s.end_headers()
             s.wfile.write(json.dumps(MANIFEST))
         elif s.path == CONFIGPATH:
             s.send_response(200)
-            s.send_header("Content-type", "text/html")
+            s.send_header("Content-Type", "text/html")
             s.end_headers()
             fd = open("knights-config.html")
             html = fd.read()
             html = html.replace("@WORD_VALUE@", CONFIG["word"])
             s.wfile.write(html)
             fd.close()
+        else:
+            s.send_response(404)
+            s.send_header("Content-Type", "text/plain")
+            s.wfile.write("404 Not Found")
 
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer

@@ -7,7 +7,7 @@ rot13.js
 
 regex.pl
 - Written in Perl.
-- A basic Motion service which notices regular expression matches in messages.
+- A Motion service which notices regular expression matches in messages.
 - Configurable, demonstrating unique and randomized configuration paths.
 
 knights.py
@@ -15,3 +15,8 @@ knights.py
 - Messages with a "shubbery" property may pass, others are tampered with.
 - Configurable, but notice that only one global configuration is used.
 - May be allergic to some certain word...
+
+slippers.rb
+- Written in Ruby.
+- Determines whether a message "in-kansas-anymore".
+- No configuration.
